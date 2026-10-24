@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reeza's Portfolio</title>
+<link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<link rel="shortcut icon" href="./favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<link rel="manifest" href="./site.webmanifest" />
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      primary: '#5d0012', 'primary-container': '#801323', 'primary-wine': '#9A1B2F',
+      secondary: '#ac2d54', 'lotus-pink': '#F48FB1', 'lotus-soft': '#FFC1D3', 'lotus-mist': '#FCE4EC',
+      sage: '#8DB87C', matcha: '#6B9080', periwinkle: '#BAC7E6',
+      cocoa: { 700: '#574141', 900: '#1d1c18' }
+    },
+    fontFamily: {
+      sans: ['"DM Sans"', 'sans-serif'],
+      serif: ['"Playfair Display"', 'serif'],
+      syne: ['"Syne"', 'sans-serif']
+    },
+    boxShadow: { lotus: '0 12px 32px -8px rgba(128,19,35,0.08), 0 4px 12px -2px rgba(244,143,177,0.12)' }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 8rem; }
+  @media (min-width: 640px) { section[id] { scroll-margin-top: 6rem; } }
+  body {
+    background-color: #FAF6F0; color: #1d1c18; font-family: 'DM Sans', sans-serif;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(244,143,177,0.12) 0%, transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(186,199,230,0.14) 0%, transparent 40%),
+      radial-gradient(circle at 50% 75%, rgba(141,184,124,0.1) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+  /* page wrapper clips the soft glows so they never cause sideways scrolling on phones */
+  .page { overflow-x: clip; }
+  .neo-card {
+    background-color: #fff; border: 1.5px solid #FFC1D3; border-radius: 1.75rem;
+    box-shadow: 0 14px 34px -8px rgba(128,19,35,0.08), 0 4px 14px -2px rgba(244,143,177,0.12);
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1), border-color .3s ease;
+  }
+  .neo-card:hover {
+    transform: translateY(-8px) scale(1.01); border-color: rgba(244,143,177,.95);
+    box-shadow: 0 20px 35px -10px rgba(128,19,35,.15), 0 0 15px rgba(244,143,177,.35);
+  }
+  .glow {
+    position: absolute; left: 0; right: 0; top: -2.5rem; bottom: -4rem; z-index: -10; pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(252,228,236,.4), rgba(255,193,211,.3));
+    filter: blur(40px); border-radius: 9999px;
+  }
+  .editorial-pill {
+    border: 1px solid rgba(255,193,211,.7);
+    background: linear-gradient(135deg, rgba(254,249,242,.95), rgba(252,228,236,.65));
+    transition: border-color .3s ease;
+  }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-lotus-soft selection:text-primary-container">
+<div class="page flex flex-col flex-1">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-[#FFC1D3]/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-0 sm:h-20 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-6">
+    <div class="flex items-center gap-8">
+      <a class="font-serif italic font-bold text-xl sm:text-2xl tracking-tight text-primary-container hover:text-secondary transition-colors flex items-center gap-2.5" href="#home">
+        <span class="w-3 h-3 rounded-full bg-lotus-pink ring-4 ring-lotus-soft/50 inline-block"></span> Reeza's Portfolio
+      </a>
+      <a class="text-xs uppercase tracking-widest font-syne font-bold text-cocoa-700 hover:text-primary-container transition-colors hidden md:inline-block" href="#home">Home</a>
+    </div>
+    <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 sm:gap-8 text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest font-syne font-bold text-cocoa-700">
+      <a class="hover:text-primary-wine transition-colors py-1" href="#about">About</a>
+      <a class="hover:text-primary-wine transition-colors py-1" href="#projects">Projects</a>
+      <a class="hover:text-primary-wine transition-colors py-1" href="#skills">Skills</a>
+      <a class="hover:text-primary-wine transition-colors py-1" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-1 max-w-5xl w-full mx-auto px-5 sm:px-6 py-10 md:py-20 space-y-20 md:space-y-28">
+
+  <!-- HERO -->
+  <section class="pt-2 md:pt-10" id="home">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+      <div class="relative group flex-shrink-0">
+        <div class="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden border-2 border-lotus-soft shadow-lotus bg-gradient-to-br from-lotus-mist via-white to-periwinkle/30 p-1.5 transition-transform duration-300 group-hover:scale-[1.02]">
+          <div class="w-full h-full rounded-[1.25rem] overflow-hidden">
+            <img alt="Reeza Maries Vancuylenberg" class="hero-img" src="./profile.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="flex-1 min-w-0 text-center md:text-left space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-lotus-mist border border-lotus-soft/80 text-primary text-[11px] font-syne font-bold uppercase tracking-widest">
+          <span>Portfolio Edition</span><span>✦</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-cocoa-900 tracking-tight leading-[1.1] break-words">Reeza Maries Vancuylenberg</h1>
+        <h2 class="text-lg sm:text-2xl font-serif italic font-semibold text-primary-wine tracking-wide">BS Computer Engineering Student specializing in machine learning at NU Fairview │ graphic designer</h2>
+        <p class="text-cocoa-700 leading-relaxed max-w-xl mx-auto md:mx-0 text-base sm:text-lg">A creative mind in tech ˚.⋆꒰১ ໒꒱⋆.˚ exploring machine learning, AI, and graphic design to bring ideas to life</p>
+        <div class="pt-3 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
+          <a class="px-6 sm:px-7 py-3.5 rounded-full bg-primary-container hover:bg-primary-wine text-white font-syne font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 inline-block" href="#projects">View My Projects</a>
+          <a class="px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-lotus-mist text-cocoa-900 border border-lotus-soft hover:border-lotus-pink font-syne font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 inline-block" href="#contact">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="space-y-6 relative" id="about">
+    <div class="glow"></div>
+    <div class="text-center space-y-1">
+      <span class="text-xs uppercase tracking-[0.2em] font-syne font-bold text-secondary">A Retrospective</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cocoa-900 tracking-tight">About</h2>
+    </div>
+    <div class="neo-card px-6 py-10 sm:p-14 text-center relative overflow-hidden">
+      <span class="absolute top-3 left-4 sm:top-4 sm:left-6 text-lotus-soft text-2xl select-none">“</span>
+      <span class="absolute bottom-2 right-4 sm:bottom-3 sm:right-6 text-lotus-soft text-2xl select-none">”</span>
+      <div class="text-cocoa-700 text-[15px] sm:text-lg leading-relaxed max-w-2xl mx-auto space-y-5">
+        <p>I am a third-year BS Computer Engineering student at National University – Fairview, passionate about exploring the intersection of creativity and technology.</p>
+        <p>With interests in machine learning, hardware engineering, software development, and graphic design, I passionately enjoy combining technical problem-solving with creative thinking to develop functional and visually appealing solutions.</p>
+        <p>Throughout my academic journey, I have gained experience in both hardware and software development while exploring different aspects of engineering, from circuit design and application development to UI/UX design and visual communication. I enjoy taking part in both the technical and creative sides of projects, whether developing functional systems, designing user interfaces, or creating posters and presentations. I believe that a balance between functionality and thoughtful design can make technology more accessible and meaningful.</p>
+        <p>Outside of academics, I enjoy expressing myself through writing and drawing.</p>
+        <p>I am always eager to learn, experiment with emerging technologies, and expand my skills as both an engineer and a designer, with the goal of creating solutions that combine innovation, usability, and creativity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="space-y-8 relative" id="projects">
+    <div class="glow"></div>
+    <div class="text-center space-y-1">
+      <span class="text-xs uppercase tracking-[0.2em] font-syne font-bold text-matcha">Selected Works</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cocoa-900 tracking-tight">Projects</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-md md:max-w-none mx-auto">
+
+      <div class="neo-card overflow-hidden flex flex-col group">
+        <div class="w-full h-52 bg-gradient-to-tr from-lotus-mist via-white to-periwinkle/30 border-b border-lotus-soft/50 p-3">
+          <div class="w-full h-full rounded-2xl overflow-hidden border border-lotus-soft/60">
+            <img alt="ROV.E.R.T.-E robot" class="hero-img transition-transform duration-500 group-hover:scale-105" src="./roverte.png">
+          </div>
+        </div>
+        <div class="p-6 sm:p-7 flex-1 flex flex-col space-y-3">
+          <div class="flex items-center justify-between text-secondary text-xs">
+            <span class="font-syne font-bold uppercase tracking-wider text-[11px] text-primary-wine">Project 01</span><span>✦</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-cocoa-900 group-hover:text-primary-container transition-colors break-words">ROV.E.R.T.-E</h3>
+          <p class="text-sm text-cocoa-700 leading-relaxed flex-1">Non-programmable Line Following Robot built via 74LS Combinational Logic</p>
+          <div class="pt-3">
+            <a class="inline-block px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary-wine text-white text-xs font-syne font-bold uppercase tracking-wider shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="https://lnkd.in/p/gBz8ZKsp">Project Link</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="neo-card overflow-hidden flex flex-col group">
+        <div class="w-full h-52 bg-gradient-to-tr from-lotus-mist via-white to-sage/20 border-b border-lotus-soft/50 p-3">
+          <div class="w-full h-full rounded-2xl overflow-hidden border border-lotus-soft/60">
+            <img alt="Essentia app" class="hero-img transition-transform duration-500 group-hover:scale-105" src="./essentia.png">
+          </div>
+        </div>
+        <div class="p-6 sm:p-7 flex-1 flex flex-col space-y-3">
+          <div class="flex items-center justify-between text-secondary text-xs">
+            <span class="font-syne font-bold uppercase tracking-wider text-[11px] text-primary-wine">Project 02</span><span>✿</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-cocoa-900 group-hover:text-primary-container transition-colors break-words">Essentia</h3>
+          <p class="text-sm text-cocoa-700 leading-relaxed flex-1">Essentia is a grocery prioritization mobile application developed using Python, Kivy, and Buildozer.</p>
+          <div class="pt-3">
+            <a class="inline-block px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary-wine text-white text-xs font-syne font-bold uppercase tracking-wider shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="https://github.com/rmariesv/ESSENTIA">Project Link</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="neo-card overflow-hidden flex flex-col group">
+        <div class="w-full h-52 bg-gradient-to-tr from-lotus-mist via-white to-periwinkle/30 border-b border-lotus-soft/50 p-3">
+          <div class="w-full h-full rounded-2xl overflow-hidden border border-lotus-soft/60 bg-white">
+            <img alt="NU Bulldogs Exchange logo" class="w-full h-full object-contain block transition-transform duration-500 group-hover:scale-105" src="./NU Inventory logo.png">
+          </div>
+        </div>
+        <div class="p-6 sm:p-7 flex-1 flex flex-col space-y-3">
+          <div class="flex items-center justify-between text-secondary text-xs">
+            <span class="font-syne font-bold uppercase tracking-wider text-[11px] text-primary-wine">Project 03</span><span>✦</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-cocoa-900 group-hover:text-primary-container transition-colors break-words">NU Bulldogs Exchange Inventory System Logo</h3>
+          <p class="text-sm text-cocoa-700 leading-relaxed flex-1">The logo for our Inventory Management System was designed using Canva to establish a recognizable visual identity for the application.</p>
+          <div class="pt-3">
+            <a class="inline-block px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary-wine text-white text-xs font-syne font-bold uppercase tracking-wider shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="https://canva.link/n0d1n9dhnlwqsbb">Project Link</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS AND TOOLS -->
+  <section class="space-y-8 relative" id="skills">
+    <div class="glow"></div>
+    <div class="text-center space-y-1">
+      <span class="text-xs uppercase tracking-[0.2em] font-syne font-bold text-secondary">Expertise &amp; Stack</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cocoa-900 tracking-tight">Skills and Tools</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+      <div class="neo-card p-6 sm:p-10 space-y-6">
+        <div class="text-center space-y-1">
+          <span class="text-xs font-syne font-bold uppercase tracking-widest text-primary-wine">01 / Craft</span>
+          <h3 class="text-2xl font-serif font-bold text-cocoa-900">Skills</h3>
+        </div>
+        <ul class="space-y-3 text-cocoa-700 text-sm sm:text-base font-medium">
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>PCB Design</span><span class="w-2 h-2 shrink-0 rounded-full bg-lotus-pink ring-2 ring-lotus-soft"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>UI/UX Design</span><span class="w-2 h-2 shrink-0 rounded-full bg-sage ring-2 ring-sage/30"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Graphic Design</span><span class="w-2 h-2 shrink-0 rounded-full bg-periwinkle ring-2 ring-periwinkle/40"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Frontend Development</span><span class="w-2 h-2 shrink-0 rounded-full bg-lotus-pink ring-2 ring-lotus-soft"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Backend Development</span><span class="w-2 h-2 shrink-0 rounded-full bg-sage ring-2 ring-sage/30"></span></li>
+        </ul>
+      </div>
+
+      <div class="neo-card p-6 sm:p-10 space-y-6">
+        <div class="text-center space-y-1">
+          <span class="text-xs font-syne font-bold uppercase tracking-widest text-matcha">02 / Toolkit</span>
+          <h3 class="text-2xl font-serif font-bold text-cocoa-900">Tools</h3>
+        </div>
+        <ul class="space-y-3 text-cocoa-700 text-sm sm:text-base font-medium">
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Diptrace</span><span class="w-2 h-2 shrink-0 rounded-full bg-lotus-pink ring-2 ring-lotus-soft"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>TinkerCad</span><span class="w-2 h-2 shrink-0 rounded-full bg-sage ring-2 ring-sage/30"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Canva</span><span class="w-2 h-2 shrink-0 rounded-full bg-periwinkle ring-2 ring-periwinkle/40"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-2xl sm:rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>VisualStudio Code ┃ Python, HTML, Java</span><span class="w-2 h-2 shrink-0 rounded-full bg-lotus-pink ring-2 ring-lotus-soft"></span></li>
+          <li class="editorial-pill px-5 py-3 rounded-full flex items-center justify-between gap-3 hover:border-lotus-pink"><span>Figma</span><span class="w-2 h-2 shrink-0 rounded-full bg-sage ring-2 ring-sage/30"></span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="space-y-8 relative" id="contact">
+    <div class="glow"></div>
+    <div class="text-center space-y-1">
+      <span class="text-xs uppercase tracking-[0.2em] font-syne font-bold text-secondary">Get In Touch</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cocoa-900 tracking-tight">Contact</h2>
+    </div>
+    <div class="neo-card px-6 py-10 sm:p-12 text-center max-w-2xl mx-auto space-y-5 sm:space-y-6 relative">
+      <div class="w-12 h-12 rounded-full bg-lotus-mist text-primary-wine mx-auto flex items-center justify-center text-lg font-serif">Ი𐑼</div>
+      <h3 class="text-2xl sm:text-3xl font-serif font-bold text-cocoa-900">Contact Information</h3>
+      <p class="text-cocoa-700 text-base sm:text-lg">+63 9496479070</p>
+      <p class="text-primary-wine font-serif italic font-semibold text-base sm:text-xl break-all sm:break-normal">rmariesvancuylenberg@gmail.com</p>
+      <div class="pt-3">
+        <a class="inline-block px-7 py-3 rounded-full bg-lotus-mist hover:bg-lotus-soft/70 text-cocoa-900 font-syne font-bold text-xs uppercase tracking-wider border border-lotus-soft hover:border-lotus-pink hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="https://www.linkedin.com/in/reeza-maries-vancuylenberg-340b0b3a9/">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mt-16 sm:mt-24 border-t border-[#FFC1D3]/50 py-8 sm:py-10 bg-gradient-to-b from-[#FAF6F0] via-lotus-mist/50 to-lotus-soft/40">
+  <div class="max-w-5xl mx-auto px-6 text-center"></div>
+</footer>
+
+</div>
+</body>
+</html>
